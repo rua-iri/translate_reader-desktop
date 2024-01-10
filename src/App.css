@@ -1,42 +1,356 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/more-leaves.png");
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/more-leaves-on-green.png");
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/morocco.png"); 
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/morocco.png"); */
+
+  background-image: linear-gradient(rgba(28, 101, 129, 0.342), rgba(51, 152, 192, 0.199)), url("./assets/moroccan.png");
+
+}
+
+
+.App {
   text-align: center;
+  margin: 7vw;
+  margin-top: 1vw;
+  background-color: white;
+  border-radius: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.focus-word {
+  display: unset;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.top-banner {
+  display: flex;
+  border-radius: 2rem;
+  margin-bottom: 1%;
+  flex-direction: row-reverse;
+  width: 100%;
+  background-color: rgb(28, 28, 32);
+  color: rgb(255, 255, 255);
+}
+
+
+.selected-word {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 3.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.audio-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-button {
+  font-size: 100%;
+  font-weight: 800;
+  width: 100%;
+  height: 100%;
+  font-family: 'Noto Emoji', sans-serif;
+}
+
+.audio-button:hover {
+  text-shadow: 0.2vw 0.2vw rgba(51, 152, 192, 0.342);
+}
+
+.audio-button:active {
+  text-shadow: 0.4vw 0.4vw rgba(51, 152, 192, 0.342);
+  font-weight: 700;
+}
+
+
+.word-examples {
+  text-decoration: unset;
+  margin-top: 1vw;
+  margin-bottom: -4vw;
+  font-size: 2.5vw;
+  color: rgba(171, 174, 223, 0.815);
+}
+
+.translations {
+  width: 100%;
+  direction: ltr;
+  font-size: 2.5vw;
+}
+
+.definition-arrow {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  width: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5vw;
+  user-select: none;
+}
+
+.root-link {
+  text-decoration: unset;
+  color: rgba(171, 174, 223, 0.815);
+}
+
+.definition-arrow img {
+  width: 75%;
+}
+
+.translation-box {
+  height: 14vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.translation-meaning {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  flex-grow: 1;
+}
+
+.translation-tense {
+  flex-grow: 1;
+}
+
+.wordbox-box {
+  margin: 2.5vw;
+}
+
+.wordbox {
+  font-size: 2.5vw;
+  width: 100%;
+  text-align: right;
+  display: inline-flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.word-elem {
+  margin: 0.2rem 0 0.2rem 0;
+}
+
+
+.grammar-box {
+  display: flex;
+  width: 100%;
+  height: 3.5vw;
+}
+
+.grammar-box-elem {
+  width: 100%;
+}
+
+
+.arab-text {
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.gimme-outline {
+  outline: 0.1vw solid rgba(246, 248, 252, 0.171);
+}
+
+.highlight-text {
+  font-weight: 800;
+  color: rgb(28, 28, 32);
+  text-shadow: 0.2vw 0.2vw rgba(51, 152, 192, 0.342);
+}
+
+
+.source-textarea {
+  height: 35vh;
+  width: 96%;
+  font-size: 2.5vw;
+  margin: 1vw;
+  resize: none;
+}
+
+.source-button {
+  border: 3px solid black;
+  border-radius: 0.4em;
+  font-weight: 900;
+  margin: 1vw;
+  font-size: 2.5vw;
+  box-shadow: 0.1em 0.1em;
+  padding: 2vw;
+}
+
+.source-button:hover {
+  text-shadow: 0.2vw 0.2vw rgba(51, 152, 192, 0.342);
+}
+
+.source-button:active {
+  text-shadow: 0.4vw 0.4vw rgba(51, 152, 192, 0.342);
+}
+
+
+#menu-box {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.637);
+}
+
+#menu-contents {
+  border-radius: 2rem;
+  background-color: rgb(228, 236, 247);
+  margin: 3% auto;
+  border: 1px solid #7f7f80;
+  width: 65%;
+  padding-bottom: 1vh;
+}
+
+#menu-title {
+  border-radius: 2rem 2rem 0 0;
+  height: 15%;
+  background-color: rgb(28, 28, 32);
+  color: rgb(255, 255, 255);
+  font-size: 4vw;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 1vh;
+}
+
+.menu-item {
+  font-size: 1.5vw;
+  margin: 2vw 2vw;
+  padding: 2vh 1vw;
+  line-height: 135%;
+  border-bottom: 0.5vh solid rgba(0, 0, 0, 1);
+}
+
+.menu-item a {
+  text-decoration: unset;
+  color: rgb(72, 90, 248);
+  font-weight: bold;
+}
+
+.menu-item h3 {
+  margin: 0;
+  margin-bottom: 2vh;
+}
+
+.menu-item .audio-button {
+  font-size: 3vw;
+  margin: 1vh;
+  padding: 3vh;
+  border-radius: 10vh;
+}
+
+.menu-item .audio-button:hover {
+  text-shadow: 0.2vw 0.2vw rgba(51, 152, 192, 0.342);
+}
+
+.menu-item .audio-button:active {
+  text-shadow: 0.2vw 0.2vw rgba(51, 152, 192, 0.342);
+  font-weight: 700;
+}
+
+.voice-radio {
+  accent-color: rgb(27, 129, 212);
+  height: 5vh;
+  width: 5vw;
+  margin: 3vh;
+}
+
+.voice-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+
+  .top-banner {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  .selected-word {
+    font-size: 4.5vw;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+
+  .translations {
+    font-size: 4.5vw;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .translation-box {
+    height: 40vw;
+    display: flex;
+    flex-direction: column;
+  }
 
-.read-the-docs {
-  color: #888;
+  .translation-meaning {
+    flex-grow: 1;
+  }
+
+  .translation-tense {
+    flex-grow: 1;
+  }
+
+
+  .grammar-box {
+    height: 8.5vw;
+  }
+
+  .definition-arrow {
+    width: 15%;
+  }
+
+
+  .wordbox {
+    font-size: 7.5vw;
+    padding-top: 2vw;
+  }
+
+  .source-textarea {
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    width: 95%;
+    font-size: 4.5vw;
+    height: 70vw;
+  }
+
+  .textarea-label {
+    font-size: 4.5vw;
+  }
+
+  .source-button {
+    padding: 4vw;
+    font-size: 5.5vw;
+    margin: 2vh;
+  }
+
+
+  #menu-contents {
+    width: 80%;
+  }
+
+  #menu-title {
+    font-size: 6vw;
+  }
+
+  .menu-item {
+    font-size: 4vw;
+  }
+
+  .menu-item .audio-button {
+    padding: 2.5vh;
+  }
+
+
+
 }
