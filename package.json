@@ -2,7 +2,7 @@
   "name": "translate_reader-desktop",
   "private": true,
   "version": "0.1.0",
-  "type": "module",
+  "type": "commonjs",
   "author": "rua-iri",
   "main": "main.js",
   "build": {
