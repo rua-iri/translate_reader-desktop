@@ -1,6 +1,6 @@
 
 
-class SegmentWord {
+class SegmentedWord {
     prefix
     stem
     suffix
@@ -67,7 +67,7 @@ class WordCombination {
 }
 
 
-module.exports = {SegmentWord, WordSolution, WordCombination};
+module.exports = {SegmentedWord, WordSolution, WordCombination};
 
 
 

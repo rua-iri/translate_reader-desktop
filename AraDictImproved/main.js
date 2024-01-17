@@ -1,5 +1,6 @@
 
-const blah = require("./wordModels");
+const { SegmentedWord, WordSolution, WordCombination } = require("./wordModels");
+const { runQuery } = require("./helpers");
 
 const harakatList = ["َ", "ً", "ُ", "ٌ", "ِ", "ٍ", "ْ", "ّ"];
 
@@ -24,13 +25,13 @@ function segmentWord(word) {
         while (stemLength >= 1 && suffixLength <= 6) {
             let stem = word.substring(prefixLength, (prefixLength + stemLength));
             let suffix = word.substring((prefixLength + stemLength), (prefixLength + stemLength + suffixLength));
-            // possibleSegments.add()
+            possibleSegments.add(new SegmentedWord(prefix, stem, suffix));
             stemLength--;
             suffixLength--;
         }
         prefixLength++;
     }
-    
+
     return possibleSegments;
 }
 
@@ -42,10 +43,14 @@ function runAnalyser(arabicWord) {
 
     const possibleSegments = segmentWord(arabicWord);
 
-    for(let segment of possibleSegments) {
+    for (let segment of possibleSegments) {
         let prefix = segment.prefix;
         let stem = segment.stem;
         let suffix = segment.suffix;
+
+        let wordCombination = new WordCombination(prefix, stem, suffix);
+        runQuery(wordCombination);
+
     }
 
 }
@@ -57,6 +62,6 @@ function main(lookupWord) {
 }
 
 
-
+main("كتاب");
 
 
