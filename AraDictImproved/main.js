@@ -27,7 +27,7 @@ function segmentWord(word) {
             let suffix = word.substring((prefixLength + stemLength), (prefixLength + stemLength + suffixLength));
             possibleSegments.add(new SegmentedWord(prefix, stem, suffix));
             stemLength--;
-            suffixLength--;
+            suffixLength++;
         }
         prefixLength++;
     }
@@ -62,6 +62,5 @@ function main(lookupWord) {
 }
 
 
-main("كتاب");
-
+main("يتكلمون");
 
