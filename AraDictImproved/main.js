@@ -1,5 +1,5 @@
 
-const { SegmentedWord, WordSolution, WordCombination } = require("./wordModels");
+const { SegmentedWord, WordCombination } = require("./wordModels");
 const { runQuery } = require("./helpers");
 
 const harakatList = ["َ", "ً", "ُ", "ٌ", "ِ", "ٍ", "ْ", "ّ"];
@@ -51,10 +51,8 @@ async function runAnalyser(arabicWord) {
         let wordCombination = new WordCombination(prefix, stem, suffix);
         await runQuery(wordCombination);
 
-        // console.log(wordCombination)
 
         for (let solution of wordCombination.combinationSolutions) {
-            // console.log(solution)
             solutionsArray.push(solution.toDict());
         }
 

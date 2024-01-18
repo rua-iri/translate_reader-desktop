@@ -1,6 +1,6 @@
 const sqlite3 = require("sqlite3").verbose();
 const { open } = require("sqlite");
-const { WordCombination, WordSolution } = require("./wordModels");
+const { WordSolution } = require("./wordModels");
 
 
 
@@ -50,7 +50,6 @@ async function runQuery(wordCombination) {
     );
 
     for (let row of result) {
-        // console.log(row)
 
         let glossMeaning = row.PRE_GLOSS;
 
