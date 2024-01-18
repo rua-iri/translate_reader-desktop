@@ -23,8 +23,7 @@ class WordSolution {
     constructor(phoneticSpelling, meaning, tense, root, verbForm) {
         this.phoneticSpelling = phoneticSpelling;
         this.meaning = meaning;
-        this.tense = tense;
-        this.tense = tense;
+        this.tense = this.setTense(tense);
         this.root = root;
         this.verbForm = verbForm;
     }
@@ -58,6 +57,10 @@ class WordCombination {
         this.stem = stem;
         this.suffix = suffix;
         this.combinationSolutions = []
+    }
+
+    blah() {
+        console.log("\n\nasdfasdf\n\n")
     }
 
     addSolution(solution) {

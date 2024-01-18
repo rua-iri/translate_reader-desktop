@@ -36,7 +36,7 @@ function segmentWord(word) {
 }
 
 
-function runAnalyser(arabicWord) {
+async function runAnalyser(arabicWord) {
 
     arabicWord = removeDiacritics(arabicWord);
     let solutionsArray = [];
@@ -49,10 +49,19 @@ function runAnalyser(arabicWord) {
         let suffix = segment.suffix;
 
         let wordCombination = new WordCombination(prefix, stem, suffix);
-        runQuery(wordCombination);
+        await runQuery(wordCombination);
+
+        // console.log(wordCombination)
+
+        for (let solution of wordCombination.combinationSolutions) {
+            // console.log(solution)
+            solutionsArray.push(solution);
+        }
 
     }
 
+    console.log(solutionsArray)
+    return solutionsArray
 }
 
 
@@ -63,4 +72,5 @@ function main(lookupWord) {
 
 
 main("يتكلمون");
+// main("كتب");
 

@@ -1,4 +1,5 @@
 const sqlite3 = require("sqlite3").verbose();
+const { open } = require("sqlite");
 const { WordCombination, WordSolution } = require("./wordModels");
 
 
@@ -20,9 +21,9 @@ INNER JOIN tableBC
 ON stems.CAT_ID=tableBC.stemCatID 
 INNER JOIN suffixes 
 ON tableBC.suffCatID=suffixes.CAT_ID 
-WHERE prefixes.FORM=$prefix 
-AND stems.FORM=$stem 
-AND suffixes.FORM=$suffix 
+WHERE prefixes.FORM=@prefix 
+AND stems.FORM=@stem 
+AND suffixes.FORM=@suffix 
 AND EXISTS 
 (SELECT * 
 FROM tableAC 
@@ -31,34 +32,41 @@ AND tableAC.suffCatID=suffixes.CAT_ID);`;
 
 
 
-function runQuery(wordCombination) {
+async function runQuery(wordCombination) {
 
-    let db = new sqlite3.Database("../data/aramorph.sqlite", sqlite3.OPEN_READONLY, (err) => {
-        if (err) {
-            console.log(err.message);
+    const db = await open({
+        filename: "../data/aramorph.sqlite",
+        mode: sqlite3.OPEN_READONLY,
+        driver: sqlite3.Database
+    })
+
+    const statement = await db.prepare(selectQuery);
+    const result = await statement.all(
+        {
+            "@prefix": wordCombination.prefix,
+            "@stem": wordCombination.stem,
+            "@suffix": wordCombination.suffix
         }
-    });
+    );
 
+    for (let row of result) {
+        // console.log(row)
 
-    db.all(selectQuery,
-        { $prefix: wordCombination.prefix, $stem: wordCombination.stem, $suffix: wordCombination.suffix },
-        (err, rows) => {
-            if (err) {
-                console.log(err.message);
-            }
+        let glossMeaning = row.PRE_GLOSS;
 
-            rows.forEach((row) => {
-                console.log(row);
-            })
-
-        });
-
-
-    db.close((err) => {
-        if (err) {
-            console.log(err.message);
+        if (row.SUF_GLOSS.includes("<verb>")) {
+            glossMeaning += " " + row.SUF_GLOSS;
+            glossMeaning = glossMeaning.replace("<verb>", row.STE_GLOSS);
+        } else {
+            glossMeaning += " " + row.STE_GLOSS;
+            glossMeaning += " " + row.SUF_GLOSS;
         }
-    });
+
+        let wordSolution = new WordSolution(row.VOC_FORM, glossMeaning, row.POS, row.ROOT, row.MEASURE);
+
+        wordCombination.addSolution(wordSolution);
+    }
+
 
 }
 
