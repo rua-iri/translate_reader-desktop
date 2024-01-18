@@ -42,6 +42,16 @@ class WordSolution {
         return trueTense;
     }
 
+    toDict() {
+        return {
+            "phoneticSpelling": this.phoneticSpelling,
+            "meaning": this.meaning,
+            "tense": this.tense,
+            "root": this.root,
+            "verbForm": this.verbForm
+        }
+    
+    }
 }
 
 
@@ -59,10 +69,6 @@ class WordCombination {
         this.combinationSolutions = []
     }
 
-    blah() {
-        console.log("\n\nasdfasdf\n\n")
-    }
-
     addSolution(solution) {
         this.combinationSolutions.push(solution);
     }
@@ -70,7 +76,7 @@ class WordCombination {
 }
 
 
-module.exports = {SegmentedWord, WordSolution, WordCombination};
+module.exports = { SegmentedWord, WordSolution, WordCombination };
 
 
 

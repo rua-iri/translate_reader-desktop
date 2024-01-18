@@ -35,7 +35,7 @@ AND tableAC.suffCatID=suffixes.CAT_ID);`;
 async function runQuery(wordCombination) {
 
     const db = await open({
-        filename: "../data/aramorph.sqlite",
+        filename: `data/aramorph.sqlite`,
         mode: sqlite3.OPEN_READONLY,
         driver: sqlite3.Database
     })

@@ -55,22 +55,29 @@ async function runAnalyser(arabicWord) {
 
         for (let solution of wordCombination.combinationSolutions) {
             // console.log(solution)
-            solutionsArray.push(solution);
+            solutionsArray.push(solution.toDict());
         }
 
     }
 
-    console.log(solutionsArray)
+    // console.log(solutionsArray)
     return solutionsArray
 }
 
 
-function main(lookupWord) {
-    wordMeanings = runAnalyser(lookupWord);
-
+async function main(lookupWord) {
+    wordMeanings = await runAnalyser(lookupWord);
+    return wordMeanings;
 }
 
 
-main("يتكلمون");
-// main("كتب");
+// main("يتكلم")
+// main("كتب")
+// main("الاستمتاع")
+// main("روح")
+// main("ذاهب")
+// main("التدخين")
+
+
+module.exports = main;
 
