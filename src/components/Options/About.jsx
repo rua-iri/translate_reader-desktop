@@ -20,7 +20,7 @@ export default function About() {
 
             <div>
                 The full source code can be found in my&nbsp;
-                <a href="https://github.com/rua-iri/translate_reader" target="_blank" rel="noreferrer">
+                <a href="https://github.com/rua-iri/translate_reader-desktop" target="_blank" rel="noreferrer">
                     GitHub repository.
                 </a>
             </div>

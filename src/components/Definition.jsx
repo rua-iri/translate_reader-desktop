@@ -1,6 +1,11 @@
 import React from "react";
 import Translation from "./Translation";
 import Arrow from "./Arrow";
+const electron = require("electron");
+const ipcRenderer = electron.ipcRenderer;
+// import { ipcRenderer } from "electron";
+
+
 
 export default function Definition(props) {
 
@@ -8,11 +13,16 @@ export default function Definition(props) {
     const [resultCounter, setResultCounter] = React.useState(0);
 
 
-    const makeAPICall = async (apiLink) => {
+    const makeAPICall = async () => {
         try {
-            const response = await fetch(apiLink, { mode: 'cors' });
-            const data = await response.json();
-            setPossibleMeanings(data);
+            // const response = await fetch(apiLink, { mode: 'cors' });
+            // const data = await response.json();
+
+            ipcRenderer.send("selectedWord", props.selectedWord);
+            ipcRenderer.on("selectedWord", (event, data) => {
+                console.log("data: ", data)
+                setPossibleMeanings(data);
+            })
         }
         catch (e) {
             console.log(e)
@@ -27,8 +37,10 @@ export default function Definition(props) {
 
         if (props.selectedWord) {
             // check the api for a definition
-            const apiUrl = "https://q4l3xqyo3d.execute-api.us-east-1.amazonaws.com/Prod/analyse?word=" + props.selectedWord;
-            makeAPICall(apiUrl);
+            // const apiUrl = "https://q4l3xqyo3d.execute-api.us-east-1.amazonaws.com/Prod/analyse?word=" + props.selectedWord;
+            makeAPICall();
+            // ipcRenderer.send("selectedWord", props.selectedWord);
+
         }
 
     }, [props]);
@@ -48,7 +60,7 @@ export default function Definition(props) {
         }
     }
 
-    const wordSelected = possibleMeanings[resultCounter] ? possibleMeanings[resultCounter].phoneticSpell : props.selectedWord;
+    const wordSelected = possibleMeanings[resultCounter] ? possibleMeanings[resultCounter].phoneticSpelling : props.selectedWord;
 
     // generate link to reverso but only show it if a user has selected a word
     const exampleLink = "https://context.reverso.net/translation/arabic-english/" + wordSelected;

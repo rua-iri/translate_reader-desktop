@@ -68,6 +68,7 @@ function App() {
       setSelectedWord(elemAlt);
       pressTime = Date.now();
       console.log(elemAlt);
+      
     }
   }
 
