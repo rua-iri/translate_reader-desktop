@@ -2,13 +2,27 @@
 const { SegmentedWord, WordCombination } = require("./wordModels");
 const { runQuery } = require("./helpers");
 
-const harakatList = ["َ", "ً", "ُ", "ٌ", "ِ", "ٍ", "ْ", "ّ"];
+// An array of the character codes for Arabic harakat
+const harakatCodeArray = [
+    1614, // fatha
+    1611, // tanwiin fatha
+    1615, // dhamma
+    1612, // tanwiin dhamma
+    1616, // kasra
+    1613, // tanwiin kasra
+    1618, // sukuun
+    1617] // shadda
 
 function removeDiacritics(word) {
-    for (const haraka of harakatList) {
-        word = word.replace(haraka, "");
+
+    let outputWord = "";
+    for (let i = 0; i < word.length; i++) {
+        if (!harakatCodeArray.includes(word[i].charCodeAt(0))) {
+            outputWord += word[i];
+        }
     }
-    return word;
+
+    return outputWord;
 }
 
 
@@ -38,7 +52,10 @@ function segmentWord(word) {
 
 async function runAnalyser(arabicWord) {
 
+    // console.log("Word with harakat: " + arabicWord);
     arabicWord = removeDiacritics(arabicWord);
+    // console.log("Word without harakat: " + arabicWord);
+
     let solutionsArray = [];
 
     const possibleSegments = segmentWord(arabicWord);
@@ -75,6 +92,10 @@ async function main(lookupWord) {
 // main("روح")
 // main("ذاهب")
 // main("التدخين")
+// main("التَدْخِين")
+// main("يتكلمون")
+// main("يَتَكَلَّمُون")
+
 
 
 module.exports = main;

@@ -15,6 +15,19 @@ test("Searches for definition of 'they speak'", async () => {
     ])
 });
 
+test("Searches for definition of 'they speak' (with harakat)", async () => {
+    const data = await main("يَتَكَلَّمُون");
+    expect(data).toStrictEqual([
+        {
+            phoneticSpelling: 'يَتَكَلَّمُونَ',
+            meaning: 'they (people) speak;talk;discuss [masc.pl.]',
+            tense: 'Subject (3. person, male, plural), Imperfect tense verb, Suffixed subject (Indicative, male, plural)',
+            root: 'كلم',
+            verbForm: '5'
+        }
+    ])
+});
+
 
 test("Searches for definition of 'to listen'", async () => {
     const data = await main("الاستمتاع");
@@ -65,6 +78,20 @@ test("Searches for definition of word 'going'", async () => {
             meaning: ' going ',
             tense: 'Adjective',
             root: 'ذهب',
+            verbForm: ''
+        }
+    ])
+});
+
+
+test("Searches for definition of word 'smoking' (with harakat)", async () => {
+    const data = await main("التَدْخِين");
+    expect(data).toStrictEqual([
+        {
+            phoneticSpelling: 'التَدْخِين',
+            meaning: 'the smoking;fumigating ',
+            tense: 'Determinative, Noun',
+            root: 'دخن',
             verbForm: ''
         }
     ])
