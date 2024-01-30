@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Word from "./components/Word"
-import Definition from './components/Definition';
+import IndividualWord from "./components/IndividualWord"
+import TopBar from './components/TopBar';
 import InputArea from './components/InputArea';
 import OptionsMenu from './components/OptionsMenu';
 
@@ -29,10 +29,9 @@ function App() {
     localStorage.removeItem("text-input");
   }
 
-  // function to change the text according to what is
-  // typed/copy and pasted into the textarea
-  function submitText() {
-    const inputText = document.getElementById("input-textarea").value;
+  function handleSubmit(event) {
+    event.preventDefault();
+    const inputText = event.target[0].value
     setWordString(inputText);
     localStorage.setItem('text-input', inputText);
   }
@@ -40,7 +39,6 @@ function App() {
 
   //function to be executed when a word is clicked
   function activateWord(elemAlt) {
-
     // check that 500 seconds have passed the same so the server isn't spammed
     if (Date.now() >= (pressTime + 500) && elemAlt !== selectedWord) {
       setSelectedWord(elemAlt);
@@ -57,7 +55,7 @@ function App() {
   const wordCollection = wordAra.map((wrd, index) => {
     const wrdFormatted = wrd.replace(/[.,،/#!$%^&*;:{}=\-_`~()"؛]/g, "");
     return (
-      <Word
+      <IndividualWord
         wordContent={wrd}
         key={wrd + index}
         alt={wrdFormatted}
@@ -77,18 +75,25 @@ function App() {
       <div className="App gimme-outline">
 
         <div className='focus-word'>
-          <Definition selectedWord={selectedWord} />
+          <TopBar selectedWord={selectedWord} />
         </div>
 
-        {wordString ? wordBox : ""}
-        {wordString ? "" : <InputArea onClick={submitText} />}
+        {wordString ? wordBox : <InputArea handleSubmit={handleSubmit} />}
 
         <span onClick={() => setShowOptions(true)}>
-          <button className='source-button' id="options-button">Options</button>
+          <button
+            className='source-button'
+            id="options-button"
+          >
+            Options
+          </button>
         </span>
 
         {wordString ? resetButton : ""}
-        <OptionsMenu showMenu={showOptions} hideMenu={() => setShowOptions(false)} />
+        <OptionsMenu
+          showMenu={showOptions}
+          hideMenu={() => setShowOptions(false)}
+        />
 
       </div>
     </>

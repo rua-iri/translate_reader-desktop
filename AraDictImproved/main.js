@@ -92,16 +92,12 @@ async function main(lookupWord) {
 // main("روح")
 // main("ذاهب")
 // main("التدخين")
-<<<<<<< Updated upstream
 // main("التَدْخِين")
 // main("يتكلمون")
 // main("يَتَكَلَّمُون")
-=======
-// main("التَدْخِينُ")
 // main("للتطبيق")
 // main("لِلتَطْبِيق")
 
->>>>>>> Stashed changes
 
 
 

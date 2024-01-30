@@ -1,14 +1,13 @@
 import React from "react";
 import AudioElem from "./AudioElem";
 
-export default function Translation(props) {
+export default function WordDataContainer(props) {
 
     let translationArray = props.allTranslations;
     let resCounter = props.resCounter;
 
     // let rootElem;
 
-    // TODO maybe add on hover so that users know what happens if they click the root link
 
     // if(translationArray[resCounter]) {
     //     rootElem = <a className="root-link" href={"https://rua-iri.github.io/rootreference?q=" + translationArray[resCounter].root}>{translationArray[resCounter].root}</a>
@@ -45,15 +44,15 @@ export default function Translation(props) {
                 <div className="gimme-outline grammar-box-elem">
                     {
                         translationArray[resCounter]
-                            ? translationArray[resCounter].verbForm
+                            ? `Form ${translationArray[resCounter].verbForm}`
                             : "verbForm"
                     }
                 </div>
                 <div className="gimmie-outline grammar-box-elem">
-                    <AudioElem
+                    {/* <AudioElem
                         phoneticWord={props.phoneticWord}
                         speakerName={localStorage.getItem("selectedVoice")}
-                    />
+                    /> */}
                 </div>
             </div>
         </div>
