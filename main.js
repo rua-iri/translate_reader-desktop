@@ -3,6 +3,11 @@ const path = require("path");
 const isDev = require("electron-is-dev");
 const main = require("./AraDictImproved/main");
 
+// import {app, BrowserWindow, ipcMain } from "electron";
+// import path from "path"
+// import isDev from "electron-is-dev"
+// import main from "./AraDictImproved/main"
+
 
 let mainWindow;
 
@@ -21,7 +26,7 @@ function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation:false
+            contextIsolation: false
         }
     })
 
@@ -31,9 +36,7 @@ function createWindow() {
 
 
     mainWindow.loadURL(startURL);
-
     mainWindow.on("closed", () => (mainWindow = null));
-
 }
 
 app.on("ready", createWindow);

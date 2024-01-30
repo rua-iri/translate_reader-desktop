@@ -7,7 +7,7 @@ export default function Word(props) {
     let fontWeight = "";
 
     if(props.isSelected) {
-        fontWeight = "highlight-text";    
+        fontWeight = "text-3xl font-bold underline`";    
     } else {
         fontWeight = "normal-text";
     }
