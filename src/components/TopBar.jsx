@@ -1,8 +1,8 @@
 import React from "react";
 import WordDataContainer from "./WordDataContainer";
 import Arrow from "./Arrow";
-const electron = require("electron");
-const ipcRenderer = electron.ipcRenderer;
+// const electron = require("electron");
+// const ipcRenderer = electron.ipcRenderer;
 
 
 
@@ -13,11 +13,11 @@ export default function TopBar(props) {
 
     const lookupWord = async () => {
         try {
-            ipcRenderer.send("selectedWord", props.selectedWord);
-            ipcRenderer.on("selectedWord", (event, data) => {
-                console.log("data: ", data)
-                setAllMeanings(data);
-            })
+            // ipcRenderer.send("selectedWord", props.selectedWord);
+            // ipcRenderer.on("selectedWord", (event, data) => {
+            //     console.log("data: ", data)
+            //     setAllMeanings(data);
+            // })
         }
         catch (e) {
             console.log(e)
@@ -53,21 +53,25 @@ export default function TopBar(props) {
 
 
     return (
-        <div className="top-banner gimme-outline" >
+        <div className="flex rounded-lg mb-1 flex-row-reverse w-full bg-slate-600 text-slate-50" >
 
             {resultCounter
                 ? <Arrow arrowShape=">" onClick={() => cycleResults(false)} />
                 : ""
             }
 
-            <div className="selected-word arab-text gimme-outline">
-                {wordSelected}
-                {wordSelected !== "Selected Word"
-                    ? examplesAnchor
-                    : ""
-                }
+            <div className="flex flex-col px-2 text-xl items-center justify-center" dir="rtl">
+                <div>
+                    {wordSelected}
+                </div>
+                <div>
+                    {wordSelected !== "Selected Word"
+                        ? examplesAnchor
+                        : "Examples"
+                    }
+                </div>
             </div>
-            <div className="translations gimme-outline">
+            <div className="w-full text-lg">
                 <WordDataContainer
                     allTranslations={allMeanings}
                     resCounter={resultCounter}

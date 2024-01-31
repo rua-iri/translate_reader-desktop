@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import IndividualWord from "./components/IndividualWord"
 import TopBar from './components/TopBar';
 import InputArea from './components/InputArea';
@@ -72,29 +72,33 @@ function App() {
 
   return (
     <>
-      <div className="App gimme-outline">
+      <div className="App h-screen bg-slate-200">
+        <div className='text-center m-3 mt-1 bg-white rounded-lg'>
 
-        <div className='focus-word'>
-          <TopBar selectedWord={selectedWord} />
+          <div className='block'>
+            <TopBar selectedWord={selectedWord} />
+          </div>
+
+          {wordString ? wordBox : <InputArea handleSubmit={handleSubmit} />}
+
+          <span onClick={() => setShowOptions(true)}>
+            <button
+              className='source-button'
+              id="options-button"
+            >
+              Options
+            </button>
+          </span>
+
+          {wordString ? resetButton : ""}
+
+          {showOptions
+            ? <OptionsMenu hideMenu={() => setShowOptions(false)} />
+            : ""
+          }
+
+
         </div>
-
-        {wordString ? wordBox : <InputArea handleSubmit={handleSubmit} />}
-
-        <span onClick={() => setShowOptions(true)}>
-          <button
-            className='source-button'
-            id="options-button"
-          >
-            Options
-          </button>
-        </span>
-
-        {wordString ? resetButton : ""}
-        <OptionsMenu
-          showMenu={showOptions}
-          hideMenu={() => setShowOptions(false)}
-        />
-
       </div>
     </>
   )

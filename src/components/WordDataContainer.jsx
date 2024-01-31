@@ -15,20 +15,17 @@ export default function WordDataContainer(props) {
     //     rootElem = "";
     // }
 
-
-    // TODO style the audio so that it fits on mobile
-
     return (
         <div>
-            <div className="translation-box">
-                <div className="translation-meaning gimme-outline">
+            <div className="h-16 flex flex-col">
+                <div className="px-1 grow-1">
                     {
                         translationArray[resCounter]
                             ? translationArray[resCounter].meaning.replaceAll(";", "/ ")
                             : "meaning"
                     }
                 </div>
-                <div className="gimme-outline translation-tense">
+                <div className="grow-1">
                     {
                         translationArray[resCounter]
                             ? translationArray[resCounter].tense
@@ -37,18 +34,18 @@ export default function WordDataContainer(props) {
                 </div>
             </div>
 
-            <div className="gimme-outline grammar-box">
-                {/* <div className="gimme-outline grammar-box-elem arab-text">
+            <div className="flex w-full">
+                {/* <div className="w-full arab-text">
                     {rootElem}
                 </div> */}
-                <div className="gimme-outline grammar-box-elem">
+                <div className="w-full">
                     {
                         translationArray[resCounter]
                             ? `Form ${translationArray[resCounter].verbForm}`
                             : "verbForm"
                     }
                 </div>
-                <div className="gimmie-outline grammar-box-elem">
+                <div className="w-full">
                     {/* <AudioElem
                         phoneticWord={props.phoneticWord}
                         speakerName={localStorage.getItem("selectedVoice")}

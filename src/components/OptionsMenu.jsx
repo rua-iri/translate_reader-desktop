@@ -5,25 +5,12 @@ import Voices from "./Options/Voices";
 
 export default function OptionsMenu(props) {
 
-    const [showOptions, setShowOptions] = React.useState(props.showMenu);
-
-
-    React.useEffect(() => {
-        setShowOptions(props.showMenu);
-    }, [props])
-
-    function saveOptions() {
-        props.hideMenu();
-    }
-
-
-
     return (
-        <div id="menu-box" style={{display: showOptions ? "block" : "none"}}>
+        <div className="flex justify-center items-center fixed z-10 start-0 top-0 w-full h-full bg-slate-600 bg-opacity-30" onClick={() => props.hideMenu()} >
 
-            <div id="menu-contents">
+            <div className="rounded-lg bg-slate-100 mx-3 w-50 opacity-100 w-1/2 h-1/2 my-2 pb-3" onClick={(e) => e.stopPropagation()}>
 
-                <div id="menu-title">
+                <div className="rounded-t-lg p-2 text-white bg-slate-600 text-lg font-semibold underline">
                     Arabic Reading Assistant
                 </div>
 
@@ -31,10 +18,9 @@ export default function OptionsMenu(props) {
 
                 <Voices />
 
-                <button className="source-button" id="save-button" onClick={saveOptions}>
+                <button className="rounded-sm" onClick={() => props.hideMenu()}>
                     Save
                 </button>
-
 
             </div>
 
