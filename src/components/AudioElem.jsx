@@ -5,9 +5,9 @@ import { Buffer } from "buffer";
 export default function AudioElem(props) {
 
     let audioLink = "";
-    const word64 = Buffer.from(props.phoneticWord).toString("base64");
+    const word64 = Buffer.from(props.textContent).toString("base64");
 
-    if (props.phoneticWord !== "Selected Word") {
+    if (props.textContent !== "Selected Word") {
         audioLink = "https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=" + props.speakerName + "22k?inputText=" + word64;
     }
 
@@ -19,11 +19,11 @@ export default function AudioElem(props) {
 
 
     return (
-        <span className="audio-box">
+        <span className="flex items-center content-center">
             <audio id={`audio-player${word64}`}
                 src={audioLink}>
             </audio>
-            <button className="audio-button" onClick={audioClick}>
+            <button className="w-full h-full " onClick={audioClick}>
                 🔊
             </button>
         </span>

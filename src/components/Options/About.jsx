@@ -4,10 +4,7 @@ import React from "react";
 export default function About() {
 
     return (
-        <div className="menu-item">
-            <h3>
-                About
-            </h3>
+        <div className="m-2 p-3 font-light">
 
             <div>
                 Welcome to the Arabic Reading Assistant.
@@ -20,7 +17,7 @@ export default function About() {
 
             <div>
                 The full source code can be found in my&nbsp;
-                <a href="https://github.com/rua-iri/translate_reader-desktop" target="_blank" rel="noreferrer">
+                <a className="font-normal" href="https://github.com/rua-iri/translate_reader-desktop" target="_blank" rel="noreferrer">
                     GitHub repository.
                 </a>
             </div>

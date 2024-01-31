@@ -8,9 +8,8 @@ export default function WordDataContainer(props) {
 
     // let rootElem;
 
-
     // if(translationArray[resCounter]) {
-    //     rootElem = <a className="root-link" href={"https://rua-iri.github.io/rootreference?q=" + translationArray[resCounter].root}>{translationArray[resCounter].root}</a>
+    //     rootElem = <a href={"https://rua-iri.github.io/rootreference?q=" + translationArray[resCounter].root}>{translationArray[resCounter].root}</a>
     // } else {
     //     rootElem = "";
     // }
@@ -34,20 +33,20 @@ export default function WordDataContainer(props) {
                 </div>
             </div>
 
-            <div className="flex w-full">
+            <div className="flex w-full h-8">
                 {/* <div className="w-full arab-text">
                     {rootElem}
                 </div> */}
                 <div className="w-full">
                     {
                         translationArray[resCounter]
-                            ? `Form ${translationArray[resCounter].verbForm}`
+                            ? translationArray[resCounter].verbForm
                             : "verbForm"
                     }
                 </div>
                 <div className="w-full">
                     {/* <AudioElem
-                        phoneticWord={props.phoneticWord}
+                        textContent={props.textContent}
                         speakerName={localStorage.getItem("selectedVoice")}
                     /> */}
                 </div>

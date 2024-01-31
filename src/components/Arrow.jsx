@@ -6,16 +6,16 @@ import leftArrow from "../assets/double-arrow-left-icon.svg";
 export default function Arrow(props) {
 
 
-    let aro;
-    if (props.arrowShape === ">") {
-        aro = rightArrow;
+    let arrowSource;
+    if (props.isArrowRight) {
+        arrowSource = rightArrow;
     } else {
-        aro = leftArrow;
+        arrowSource = leftArrow;
     }
 
     return (
-        <div className="gimme-outline definition-arrow" onClick={props.onClick}>
-            <img src={aro} alt="arrow button" />
+        <div className="invert w-10 flex items-center justify-center select-none" onClick={props.onClick}>
+            <img className="w-3/4 mx-2" src={arrowSource} alt="arrow button" />
         </div>
     )
 }

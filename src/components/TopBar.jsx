@@ -1,8 +1,8 @@
 import React from "react";
 import WordDataContainer from "./WordDataContainer";
 import Arrow from "./Arrow";
-// const electron = require("electron");
-// const ipcRenderer = electron.ipcRenderer;
+const electron = require("electron");
+const ipcRenderer = electron.ipcRenderer;
 
 
 
@@ -13,11 +13,11 @@ export default function TopBar(props) {
 
     const lookupWord = async () => {
         try {
-            // ipcRenderer.send("selectedWord", props.selectedWord);
-            // ipcRenderer.on("selectedWord", (event, data) => {
-            //     console.log("data: ", data)
-            //     setAllMeanings(data);
-            // })
+            ipcRenderer.send("selectedWord", props.selectedWord);
+            ipcRenderer.on("selectedWord", (event, data) => {
+                console.log("data: ", data)
+                setAllMeanings(data);
+            })
         }
         catch (e) {
             console.log(e)
@@ -49,14 +49,14 @@ export default function TopBar(props) {
         : props.selectedWord;
 
     const examplesLink = "https://context.reverso.net/translation/arabic-english/" + wordSelected;
-    const examplesAnchor = <a className="word-examples" href={examplesLink} target="_blank" rel="noreferrer">Examples</a>;
+    const examplesAnchor = <a className="mt-1 mb-10 text-lg text-stone-300" href={examplesLink} target="_blank" rel="noreferrer">Examples</a>;
 
 
     return (
         <div className="flex rounded-lg mb-1 flex-row-reverse w-full bg-slate-600 text-slate-50" >
 
             {resultCounter
-                ? <Arrow arrowShape=">" onClick={() => cycleResults(false)} />
+                ? <Arrow isArrowRight={true} onClick={() => cycleResults(false)} />
                 : ""
             }
 
@@ -67,7 +67,7 @@ export default function TopBar(props) {
                 <div>
                     {wordSelected !== "Selected Word"
                         ? examplesAnchor
-                        : "Examples"
+                        : ""
                     }
                 </div>
             </div>
@@ -75,12 +75,12 @@ export default function TopBar(props) {
                 <WordDataContainer
                     allTranslations={allMeanings}
                     resCounter={resultCounter}
-                    phoneticWord={wordSelected}
+                    textContent={wordSelected}
                 />
             </div>
 
             {(resultCounter < allMeanings.length - 1)
-                ? <Arrow arrowShape="<" onClick={() => cycleResults(true)} />
+                ? <Arrow isArrowRight={false} onClick={() => cycleResults(true)} />
                 : ""}
         </div>
     )

@@ -14,28 +14,67 @@ export default function Voices() {
 
     return (
 
-        <div className="menu-item">
-            <h3>Available Voices</h3>
-            <div className="voice-box">
-                <div>
+        <div className="m-3 p-3 font-light">
+            <h3 className="font-normal mb-2">Available Voices</h3>
+            <div className="flex justify-center">
+                <div className="mx-4">
                     Leila
-                    <AudioElem phoneticWord={"مرحبا، اسمي ليلَى"} speakerName="Leila" />
-                    <input className="voice-radio" type="radio" name="radio-group" value="Leila" onChange={changeSelectedVoice} defaultChecked={"Leila"===selectedVoice} />
+                    <AudioElem
+                        textContent={"مرحبا، اسمي ليلَى"}
+                        speakerName="Leila"
+                    />
+                    <input
+                        className="radio radio-info mx-2"
+                        type="radio"
+                        name="radio-group"
+                        value="Leila"
+                        onChange={changeSelectedVoice}
+                        defaultChecked={"Leila" === selectedVoice}
+                    />
                 </div>
-                <div>
+                <div className="mx-4">
                     Mehdi
-                    <AudioElem phoneticWord={"مرحبا، اسمي مَهدِي"} speakerName="Mehdi" />
-                    <input className="voice-radio" type="radio" name="radio-group" value="Mehdi" onChange={changeSelectedVoice} defaultChecked={"Mehdi"===selectedVoice} />
+                    <AudioElem
+                        textContent={"مرحبا، اسمي مَهدِي"}
+                        speakerName="Mehdi"
+                    />
+                    <input
+                        className="radio radio-info mx-2"
+                        type="radio"
+                        name="radio-group"
+                        value="Mehdi"
+                        onChange={changeSelectedVoice}
+                        defaultChecked={"Mehdi" === selectedVoice}
+                    />
                 </div>
-                <div>
+                <div className="mx-4">
                     Nizar
-                    <AudioElem phoneticWord={"مرحبا، اسمي نزار"} speakerName="Nizar" />
-                    <input className="voice-radio" type="radio" name="radio-group" value="Nizar" onChange={changeSelectedVoice} defaultChecked={"Nizar"===selectedVoice} />
+                    <AudioElem
+                        textContent={"مرحبا، اسمي نزار"}
+                        speakerName="Nizar"
+                    />
+                    <input
+                        className="radio radio-info mx-2"
+                        type="radio"
+                        name="radio-group"
+                        value="Nizar"
+                        onChange={changeSelectedVoice}
+                        defaultChecked={"Nizar" === selectedVoice}
+                    />
                 </div>
-                <div>
+                <div className="mx-4">
                     Salma
-                    <AudioElem phoneticWord={"مرحبا، اسمي سلمَى"} speakerName="Salma" />
-                    <input className="voice-radio" type="radio" name="radio-group" value="Salma" onChange={changeSelectedVoice} defaultChecked={"Salma"===selectedVoice} />
+                    <AudioElem
+                        textContent={"مرحبا، اسمي سلمَى"}
+                        speakerName="Salma" />
+                    <input
+                        className="radio radio-info mx-2"
+                        type="radio"
+                        name="radio-group"
+                        value="Salma"
+                        onChange={changeSelectedVoice}
+                        defaultChecked={"Salma" === selectedVoice}
+                    />
                 </div>
             </div>
         </div>

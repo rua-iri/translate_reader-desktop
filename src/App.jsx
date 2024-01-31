@@ -4,6 +4,7 @@ import IndividualWord from "./components/IndividualWord"
 import TopBar from './components/TopBar';
 import InputArea from './components/InputArea';
 import OptionsMenu from './components/OptionsMenu';
+import CustomButton from './components/CustomButton';
 
 
 
@@ -64,8 +65,12 @@ function App() {
     )
   })
 
-  const resetButton = <button className="source-button" onClick={resetText}>Reset</button>;
-  const wordBox = <div className="wordbox-box"><div className="wordbox arab-text gimme-outline">{wordCollection}</div></div>;
+  
+  const resetButton = <CustomButton textContent={"Reset"} handleClick={resetText} />
+  const wordBox = <div className="m-4">
+    <div dir='rtl' className="w-full text-right inline-flex flex-wrap">
+      {wordCollection}
+    </div></div>;
 
   // TODO the options and reset buttons are not inline when the word-box is empty
 
@@ -73,7 +78,7 @@ function App() {
   return (
     <>
       <div className="App h-screen bg-slate-200">
-        <div className='text-center m-3 mt-1 bg-white rounded-lg'>
+        <div className='text-center m-3 mt-1 bg-white rounded-lg pb-3'>
 
           <div className='block'>
             <TopBar selectedWord={selectedWord} />
@@ -81,14 +86,7 @@ function App() {
 
           {wordString ? wordBox : <InputArea handleSubmit={handleSubmit} />}
 
-          <span onClick={() => setShowOptions(true)}>
-            <button
-              className='source-button'
-              id="options-button"
-            >
-              Options
-            </button>
-          </span>
+          <CustomButton textContent={"Options"} handleClick={() => setShowOptions(true)} />
 
           {wordString ? resetButton : ""}
 

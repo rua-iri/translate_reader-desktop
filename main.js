@@ -36,6 +36,7 @@ function createWindow() {
 
 
     mainWindow.loadURL(startURL);
+    // mainWindow.setMenu(null);
     mainWindow.on("closed", () => (mainWindow = null));
 }
 
