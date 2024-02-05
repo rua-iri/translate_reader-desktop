@@ -32,7 +32,7 @@ function createWindow() {
 
     const startURL = isDev
         ? "http://localhost:5173"
-        : `file://${path.join(__dirname, "../build/index.html")}`;
+        : `file://${path.join(__dirname, "../viteDist/index.html")}`;
 
 
     mainWindow.loadURL(startURL);

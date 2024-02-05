@@ -6,7 +6,7 @@
   "author": "rua-iri",
   "main": "main.js",
   "build": {
-    "appId": "com.example.translate_reader-desktop",
+    "appId": "com.rua-iri.translate_reader-desktop",
     "productName": "translate_reader-desktop",
     "directories": {
       "output": "dist"
