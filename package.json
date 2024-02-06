@@ -10,6 +10,20 @@
     "productName": "translate_reader-desktop",
     "directories": {
       "output": "dist"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "/public/favicon.ico"
+    },
+    "dmg": {
+      "title": "${productName} ${version}"
     }
   },
   "scripts": {
